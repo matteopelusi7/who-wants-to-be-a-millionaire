@@ -9,6 +9,19 @@
 
     <div class="footer">
 
+      <div class="question">
+        <p>ciao</p>
+      </div>
+
+      <div  class="answer">
+        <ul class="list-item">
+          <li class="item">A:</li>
+          <li class="item">B:</li>
+          <li class="item">C:</li>
+          <li class="item">D:</li>
+        </ul>
+      </div>
+
     </div>
 
   </div>
@@ -45,7 +58,53 @@ export default {
 
 .footer {
   height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: rgb(1, 1, 77);
+
+    .question {
+      color: white;
+      border: 1px solid white;
+      width: 600px;
+      margin-top: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 100px;
+
+      p{
+        
+      }
+      
+    }
+
+    .answer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+    }
+
+    .list-item {
+      padding: 0;
+      list-style: none;
+      display: flex;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .item {
+        width: calc(100% / 4);
+        margin: 20px 30px;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: center;
+        border: 1px solid white;
+      }
+    }
+
 }
 
 </style>
