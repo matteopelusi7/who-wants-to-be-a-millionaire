@@ -7,18 +7,18 @@
       </figure>
     </div>
 
-    <div class="footer">
+    <div v-for="(el, i) in questions" :key="i" class="footer">
 
       <div class="question">
-        <p>ciao</p>
+        <p>{{ el.question }}</p>
       </div>
 
       <div  class="answer">
         <ul class="list-item">
-          <li class="item">A:</li>
-          <li class="item">B:</li>
-          <li class="item">C:</li>
-          <li class="item">D:</li>
+          <li class="item">A: {{ el.answ1 }}</li>
+          <li class="item">B: {{ el.answ2 }}</li>
+          <li class="item">C: {{ el.answ3 }}</li>
+          <li class="item">D: {{ el.answ4 }}</li>
         </ul>
       </div>
 
