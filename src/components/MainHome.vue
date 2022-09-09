@@ -15,7 +15,7 @@
 
       <div  class="answer">
         <ul class="list-item">
-          <li v-for="(el, i) in questions.answer" :key="i" class="item">A: {{ el }}</li>
+          <li @click="correctFalse(el)" v-for="(el, i) in questions[rand].answer" :key="i" class="item">{{ el }}</li>
         </ul>
       </div>
 
@@ -29,6 +29,7 @@ export default {
   name: 'MainHome',
   data() {
     return {
+      rand: null,
       questions: [
         {
           question: 'Quanti fusi orari ci sono in Russia?',
@@ -38,7 +39,7 @@ export default {
             answ3: '11',
             answ4: '8',
           },
-          answercorrect: '11'
+          answercorrect: '11',
         },
         {
           question: 'Qual è il fiore nazionale del Giappone?',
@@ -58,7 +59,7 @@ export default {
             answ3: '21',
             answ4: '13',
           },
-          answercorrect: '13'
+          answercorrect: '13',
         },
         {
           question: 'Qual è il paese più piccolo del mondo?',
@@ -68,7 +69,7 @@ export default {
             answ3: 'San Marino',
             answ4: 'Andorra',
           },
-          answercorrect: 'Il Vaticano'
+          answercorrect: 'Il Vaticano',
         },
         {
           question: 'Quando ha aperto la metropolitana di Londra?',
@@ -78,7 +79,7 @@ export default {
             answ3: '1863',
             answ4: '1861',
           },
-          answercorrect: '1863'
+          answercorrect: '1863',
         },
         {
           question: 'Da quale città provengono i Beatles?',
@@ -88,7 +89,7 @@ export default {
             answ3: 'Scozia',
             answ4: 'Londra',
           },
-          answercorrect: 'Liverpool'
+          answercorrect: 'Liverpool',
         },
         {
           question: 'La serie di libri più venduti del XXI secolo?',
@@ -98,7 +99,7 @@ export default {
             answ3: 'Star Wars',
             answ4: 'The Mandalorian',
           },
-          answercorrect: 'Harry Potter'
+          answercorrect: 'Harry Potter',
         },
         {
           question: 'Quale dei seguenti imperi non aveva una lingua scritta:',
@@ -108,7 +109,7 @@ export default {
             answ3: 'Egiziano',
             answ4: 'Romano',
           },
-          answercorrect: 'Inca'
+          answercorrect: 'Inca',
         },
         {
           question: 'Qual è la capitale del Canada?',
@@ -118,7 +119,7 @@ export default {
             answ3: 'Ottawa',
             answ4: 'New York',
           },
-          answercorrect: 'Ottawa'
+          answercorrect: 'Ottawa',
         },
         {
           question: 'Quale giocatore ha vinto più palloni d oro?',
@@ -128,14 +129,28 @@ export default {
             answ3: 'Messi',
             answ4: 'Pelè',
           },
-          answercorrect: 'Messi'
+          answercorrect: 'Messi',
         },
       ]
     }
   },
   methods: {
     random: function () {
-      return Math.floor(Math.random()*2);
+      const res = Math.floor(Math.random()*10);
+      // console.log( res )
+      this.rand = res
+      return res
+    },
+    correctFalse: function(el) {
+
+      if(el == this.questions[this.rand].answercorrect) {
+        console.log('corretto')
+        this.rand = null
+      } else {
+        console.log('errato')
+        this.rand = null
+      }
+
     }
   }
 }
@@ -162,6 +177,14 @@ export default {
       width: 300px;
     }
   }
+}
+
+.correct {
+  background-color: green;
+}
+
+.false {
+  background-color: red;
 }
 
 .footer {
@@ -210,6 +233,7 @@ export default {
         display: flex;
         justify-content: center;
         border: 1px solid white;
+        cursor: pointer;
       }
     }
 
