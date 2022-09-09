@@ -7,18 +7,15 @@
       </figure>
     </div>
 
-    <div v-for="(el, i) in questions" :key="i" class="footer">
+    <div class="footer">
 
       <div class="question">
-        <p>{{ el.question }}</p>
+        <p>{{ questions[random()].question }}</p>
       </div>
 
       <div  class="answer">
         <ul class="list-item">
-          <li class="item">A: {{ el.answ1 }}</li>
-          <li class="item">B: {{ el.answ2 }}</li>
-          <li class="item">C: {{ el.answ3 }}</li>
-          <li class="item">D: {{ el.answ4 }}</li>
+          <li v-for="(el, i) in questions.answer" :key="i" class="item">A: {{ el }}</li>
         </ul>
       </div>
 
@@ -35,85 +32,110 @@ export default {
       questions: [
         {
           question: 'Quanti fusi orari ci sono in Russia?',
-          answ1: '9',
-          answ2: '5',
-          answ3: '11',
-          answ4: '8',
+          answer: {
+            answ1: '9',
+            answ2: '5',
+            answ3: '11',
+            answ4: '8',
+          },
           answercorrect: '11'
         },
         {
           question: 'Qual è il fiore nazionale del Giappone?',
-          answ1: 'Fiore di ciliegio',
-          answ2: 'Fiore di pesche',
-          answ3: 'Fiore di fichi',
-          answ4: 'Fiore di fragola',
+          answer: {
+            answ1: 'Fiore di ciliegio',
+            answ2: 'Fiore di pesche',
+            answ3: 'Fiore di fichi',
+            answ4: 'Fiore di fragola',
+          },
           answercorrect: 'Fiore di ciliegio'
         },
         {
           question: 'Quante strisce ci sono sulla bandiera americana?',
-          answ1: '10',
-          answ2: '15',
-          answ3: '21',
-          answ4: '13',
+          answer: {
+            answ1: '10',
+            answ2: '15',
+            answ3: '21',
+            answ4: '13',
+          },
           answercorrect: '13'
         },
         {
           question: 'Qual è il paese più piccolo del mondo?',
-          answ1: 'Gibilterra',
-          answ2: 'Il Vaticano',
-          answ3: 'San Marino',
-          answ4: 'Andorra',
+          answer: {
+            answ1: 'Gibilterra',
+            answ2: 'Il Vaticano',
+            answ3: 'San Marino',
+            answ4: 'Andorra',
+          },
           answercorrect: 'Il Vaticano'
         },
         {
           question: 'Quando ha aperto la metropolitana di Londra?',
-          answ1: '1871',
-          answ2: '1926',
-          answ3: '1863',
-          answ4: '1861',
+          answer: {
+            answ1: '1871',
+            answ2: '1926',
+            answ3: '1863',
+            answ4: '1861',
+          },
           answercorrect: '1863'
         },
         {
           question: 'Da quale città provengono i Beatles?',
-          answ1: 'Manchester',
-          answ2: 'Liverpool',
-          answ3: 'Scozia',
-          answ4: 'Londra',
+          answer: {
+            answ1: 'Manchester',
+            answ2: 'Liverpool',
+            answ3: 'Scozia',
+            answ4: 'Londra',
+          },
           answercorrect: 'Liverpool'
         },
         {
           question: 'La serie di libri più venduti del XXI secolo?',
-          answ1: 'Harry Potter',
-          answ2: 'Signore degli anelli',
-          answ3: 'Star Wars',
-          answ4: 'The Mandalorian',
+          answer: {
+            answ1: 'Harry Potter',
+            answ2: 'Signore degli anelli',
+            answ3: 'Star Wars',
+            answ4: 'The Mandalorian',
+          },
           answercorrect: 'Harry Potter'
         },
         {
           question: 'Quale dei seguenti imperi non aveva una lingua scritta:',
-          answ1: 'Inca',
-          answ2: 'Azteco',
-          answ3: 'Egiziano',
-          answ4: 'Romano',
+          answer: {
+            answ1: 'Inca',
+            answ2: 'Azteco',
+            answ3: 'Egiziano',
+            answ4: 'Romano',
+          },
           answercorrect: 'Inca'
         },
         {
           question: 'Qual è la capitale del Canada?',
-          answ1: 'Los Angeles',
-          answ2: 'Toronto',
-          answ3: 'Ottawa',
-          answ4: 'New York',
+          answer: {
+            answ1: 'Los Angeles',
+            answ2: 'Toronto',
+            answ3: 'Ottawa',
+            answ4: 'New York',
+          },
           answercorrect: 'Ottawa'
         },
         {
           question: 'Quale giocatore ha vinto più palloni d oro?',
-          answ1: 'Cristiano Ronaldo',
-          answ2: 'Maradona',
-          answ3: 'Messi',
-          answ4: 'Pelè',
+          answer: {
+            answ1: 'Cristiano Ronaldo',
+            answ2: 'Maradona',
+            answ3: 'Messi',
+            answ4: 'Pelè',
+          },
           answercorrect: 'Messi'
         },
       ]
+    }
+  },
+  methods: {
+    random: function () {
+      return Math.floor(Math.random()*2);
     }
   }
 }
