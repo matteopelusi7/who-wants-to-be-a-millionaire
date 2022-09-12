@@ -9,12 +9,12 @@
 
     <div class="footer">
 
-      <div v-if="cont < 10" class="question">
+      <div v-if="cont < 7" class="question">
         <p>{{ questions[random()].question }}</p>
       </div>
 
       <div  class="answer">
-        <ul class="list-item" v-if="cont < 10">
+        <ul class="list-item" v-if="cont < 7">
           <li @click="correctFalse(el)" v-for="(el, i) in questions[rand].answer" :key="i" class="item">
             <p :class=" (questions[rand].done == true) ? 'correct' : '' ">{{ el }}</p>
           </li>
@@ -154,7 +154,7 @@ export default {
     },
     correctFalse: function(el) {
 
-      if( this.cont < 10 ) {
+      if( this.cont < 7 ) {
 
         if(el == this.questions[this.rand].answercorrect) {
           console.log('corretto')
