@@ -273,4 +273,85 @@ export default {
 
 }
 
+@media all and (max-width: 600px) {
+
+.fix {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  background-color: blue;
+
+  .image-logo {
+    img {
+      width: 200px;
+    }
+  }
+}
+
+.correct {
+  background-color: green;
+}
+
+.false {
+  background-color: red;
+}
+
+.footer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(1, 1, 77);
+
+    .question {
+      width: 80%;
+      color: white;
+      border: 1px solid white;
+      margin-top: 70px;
+      // margin-left: 70px;
+      // margin-right: 70px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 100px;
+
+    }
+
+    .answer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+    }
+
+    .list-item {
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .item {
+        width: calc(100% / 4);
+        margin: 20px 30px;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: center;
+        border: 1px solid white;
+        cursor: pointer;
+      }
+    }
+}
+  
+}
+
 </style>
