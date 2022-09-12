@@ -9,14 +9,21 @@
 
     <div class="footer">
 
-      <div class="question">
+      <div v-if="cont < 10" class="question">
         <p>{{ questions[random()].question }}</p>
       </div>
 
       <div  class="answer">
-        <ul class="list-item">
-          <li @click="correctFalse(el)" v-for="(el, i) in questions[rand].answer" :key="i" class="item">{{ el }}</li>
+        <ul class="list-item" v-if="cont < 10">
+          <li @click="correctFalse(el)" v-for="(el, i) in questions[rand].answer" :key="i" class="item">
+            <p :class=" (questions[rand].done == true) ? 'correct' : '' ">{{ el }}</p>
+          </li>
         </ul>
+        <div v-else class="fix">
+          <h3 class="text-uppercase">Hai terminato!!</h3>
+          <p>Hai indovinato {{ correct }} domande</p>
+          <p>Hai sbagliato {{ error }} domande</p>
+        </div>
       </div>
 
     </div>
@@ -30,14 +37,18 @@ export default {
   data() {
     return {
       rand: null,
+      cont: 0,
+      error: 0,
+      correct: 0,
+      finish: false,
       questions: [
         {
           question: 'Quanti fusi orari ci sono in Russia?',
           answer: {
-            answ1: '9',
-            answ2: '5',
-            answ3: '11',
-            answ4: '8',
+            answ1 : '9', 
+            answ2 : '5', 
+            answ3 : '11',
+            answ4 : '8',
           },
           answercorrect: '11',
         },
@@ -143,12 +154,26 @@ export default {
     },
     correctFalse: function(el) {
 
-      if(el == this.questions[this.rand].answercorrect) {
-        console.log('corretto')
-        this.rand = null
+      if( this.cont < 10 ) {
+
+        if(el == this.questions[this.rand].answercorrect) {
+          console.log('corretto')
+          // this.questions[this.rand].done == true
+          this.rand = null
+
+          this.correct++
+          this.cont++
+        } else {
+          console.log('errato')
+          // this.questions[this.rand].done == false
+          this.rand = null
+
+          this.error++
+          this.cont++
+        }
+
       } else {
-        console.log('errato')
-        this.rand = null
+        this.finish == true
       }
 
     }
@@ -163,6 +188,15 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.fix {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 60px 0;
 }
 
 .header {
