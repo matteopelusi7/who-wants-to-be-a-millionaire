@@ -15,8 +15,8 @@
 
       <div  class="answer">
         <ul class="list-item" v-if="cont < 7">
-          <li @click="correctFalse(el)" v-for="(el, i) in questions[rand].answer" :key="i" class="item">
-            <p :class=" (questions[rand].done == true) ? 'correct' : '' ">{{ el }}</p>
+          <li  @click="correctFalse(el)" v-for="(el, i) in questions[rand].answer" :key="i" class="item">
+            <p class="">{{ el }}</p>
           </li>
         </ul>
         <div v-else class="fix">
@@ -45,7 +45,7 @@ export default {
         {
           question: 'Quanti fusi orari ci sono in Russia?',
           answer: {
-            answ1 : '9', 
+            answ1 : '9',
             answ2 : '5', 
             answ3 : '11',
             answ4 : '8',
@@ -148,7 +148,6 @@ export default {
   methods: {
     random: function () {
       const res = Math.floor(Math.random()*10);
-      // console.log( res )
       this.rand = res
       return res
     },
@@ -158,14 +157,12 @@ export default {
 
         if(el == this.questions[this.rand].answercorrect) {
           console.log('corretto')
-          // this.questions[this.rand].done == true
           this.rand = null
 
           this.correct++
           this.cont++
         } else {
           console.log('errato')
-          // this.questions[this.rand].done == false
           this.rand = null
 
           this.error++
