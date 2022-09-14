@@ -431,6 +431,13 @@ export default {
   justify-content: center;
 }
 
+.init {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
 .header {
   background-color: blue;
 
@@ -450,7 +457,7 @@ export default {
 }
 
 .footer {
-  height: 100%;
+  height: 200%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -476,10 +483,12 @@ export default {
       justify-content: center;
       align-items: center;
       width: 80%;
+      height: 100%;
     }
 
     .list-item {
       padding: 0;
+      height: 100%;
       list-style: none;
       display: flex;
       flex-wrap: wrap;
