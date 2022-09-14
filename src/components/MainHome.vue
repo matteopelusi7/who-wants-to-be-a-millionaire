@@ -9,22 +9,34 @@
 
     <div class="footer">
 
-      <div v-if="cont < 7" class="question">
-        <p>{{ questions[random()].question }}</p>
+      <div class="init-game" v-if="insertName == false">
+        <h2>Benvenuto a chi vuol essere milionario!</h2>
+        <p>Attenzione!! alcune domande potrebbero ripetersi, quindi ragionaci bene! 😉</p>
+        <p>Inserisci il tuo nome qui sotto &Darr;</p>
+        <input class="input-type" placeholder="Inserisci il tuo nome" type="text" v-model="name">
+        <button class="button" @click="initGame()">Inizia</button>
       </div>
 
-      <div  class="answer">
-        <ul class="list-item" v-if="cont < 7">
-          <li  @click="correctFalse(el)" v-for="(el, i) in questions[rand].answer" :key="i" class="item">
-            <p class="">{{ el }}</p>
-          </li>
-        </ul>
-        <div v-else class="fix">
-          <h3 class="text-uppercase">Hai terminato!!</h3>
-          <p>Hai indovinato {{ correct }} domande</p>
-          <p>Hai sbagliato {{ error }} domande</p>
+      <div class="init" v-else>
+        <div v-if="cont < 7" class="question">
+          <p>{{ questions[random()].question }}</p>
+        </div>
+
+        <div  class="answer">
+          <ul class="list-item" v-if="cont < 7">
+            <li  @click="correctFalse(el)" v-for="(el, i) in questions[rand].answer" :key="i" class="item">
+              <p class="">{{ el }}</p>
+            </li>
+          </ul>
+          <div v-else class="fix">
+            <h3 class="text-uppercase">Hai terminato!!</h3>
+            <p>Ecco i tuoi risultati {{ name }}</p>
+            <p>Hai indovinato {{ correct }} domande</p>
+            <p>Hai sbagliato {{ error }} domande</p>
+          </div>
         </div>
       </div>
+
 
     </div>
 
@@ -37,7 +49,9 @@ export default {
   data() {
     return {
       rand: null,
+      insertName: false,
       cont: 0,
+      name: '',
       error: 0,
       correct: 0,
       finish: false,
@@ -142,12 +156,112 @@ export default {
           },
           answercorrect: 'Messi',
         },
+        {
+          question: 'L’Italia è',
+          answer: {
+            answ1: 'Una Repubblica presidenziale',
+            answ2: 'Una Repubblica angioplastica',
+            answ3: 'Una Repubblica parlamentare ',
+            answ4: 'Una Monarchia costituzionale',
+          },
+          answercorrect: 'Una Repubblica parlamentare ',
+        },
+        {
+          question: 'Il participio passato del verbo esigere è',
+          answer: {
+            answ1: 'Esigito',
+            answ2: 'Esigiuto',
+            answ3: 'Esagitato',
+            answ4: 'Esatto',
+          },
+          answercorrect: 'Esatto',
+        },
+        {
+          question: 'Cos’è un neologismo?',
+          answer: {
+            answ1: 'Una tecnica chirurgica per la rimozione degli angiomi benigni',
+            answ2: 'Uno strappo muscolare al gomito, tipico del giocatore di tennis',
+            answ3: 'Una parola od espressione entrata recentemente nella lingua',
+            answ4: 'Una parola inutile e superflua all’interno di una frase',
+          },
+          answercorrect: 'Una parola od espressione entrata recentemente nella lingua',
+        },
+        {
+          question: 'Quale fra i seguenti nomi non appartiene ad un noto designer?',
+          answer: {
+            answ1: 'Achille Castiglioni',
+            answ2: 'Richard Sapper',
+            answ3: 'Renato Soru',
+            answ4: 'Paolo Ulian',
+          },
+          answercorrect: 'Renato Soru',
+        },
+        {
+          question: 'In quale anno il Fascismo emanò le cosiddette leggi razziali?',
+          answer: {
+            answ1: '1915',
+            answ2: '1933',
+            answ3: '1938',
+            answ4: '1968',
+          },
+          answercorrect: '1938',
+        },
+        {
+          question: 'Emmanuel Macron è',
+          answer: {
+            answ1: 'L’inventore degli obiettivi usati per la macrofotografi',
+            answ2: 'L’attuale Presidente della Repubblica Ceca',
+            answ3: 'L’autore, insieme a D’Alembert, della famosa Encyclopédie',
+            answ4: 'L’attuale Presidente della Repubblica Francese',
+          },
+          answercorrect: 'L’attuale Presidente della Repubblica Francese',
+        },
+        {
+          question: 'La semiotica è',
+          answer: {
+            answ1: 'La disciplina che studia i segni, per mezzo dei quali avviene la comunicazione',
+            answ2: 'La disciplina che studia i sogni e le loro conseguenze nella psicanalisi',
+            answ3: 'Una branca della botanica che studia il modo di riprodursi delle piante',
+            answ4: 'Una branca della psicanalisi, che si occupa delle persone con deficit da accudimento',
+          },
+          answercorrect: 'La disciplina che studia i segni, per mezzo dei quali avviene la comunicazione',
+        },
+        {
+          question: 'Quale dei seguenti nomi è fuori posto rispetto gli altri tre?',
+          answer: {
+            answ1: 'Primo Levi',
+            answ2: 'Carlo Levi',
+            answ3: 'Rita Levi Montalcini',
+            answ4: 'Italo Calvino',
+          },
+          answercorrect: 'Rita Levi Montalcini',
+        },
+        {
+          question: 'Dei delitti e delle pene è un’opera di:',
+          answer: {
+            answ1: 'Cesare Beccaria',
+            answ2: 'Alessandro Verri',
+            answ3: 'Francesco Saverio Borrelli',
+            answ4: 'Giuseppe Parini',
+          },
+          answercorrect: 'Cesare Beccaria',
+        },
+        {
+          question: 'Quale dei seguenti noti quotidiani si occupa in particolare di notizie economiche legate al mondo del lavoro?',
+          answer: {
+            answ1: 'La Repubblica',
+            answ2: 'Il Corriere della Sera',
+            answ3: 'Il Sole 24 Ore ',
+            answ4: 'Il Fatto Quotidiano',
+          },
+          answercorrect: 'Il Sole 24 Ore ',
+        },
       ]
     }
   },
   methods: {
     random: function () {
-      const res = Math.floor(Math.random()*10);
+      const res = Math.floor(Math.random()*20);
       this.rand = res
       return res
     },
@@ -173,6 +287,13 @@ export default {
         this.finish == true
       }
 
+    },
+    initGame: function() {
+      if(this.name != '') {
+        this.insertName = true
+      } else {
+        alert('Inserisci il tuo nome')
+      }
     }
   }
 }
@@ -185,6 +306,37 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.init-game {
+  margin: 60px 15px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-type {
+  width: 50%;
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding: 6px 5px;
+  margin-bottom: 5px;
+}
+
+.button {
+  width: 20%;
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid blue;
+  cursor: pointer;
+}
+
+.init {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .fix {
@@ -230,6 +382,7 @@ export default {
       border: 1px solid white;
       width: 600px;
       margin-top: 70px;
+      padding: 0 15px;
       display: flex;
       justify-content: center;
       align-items: center;
