@@ -343,7 +343,6 @@ export default {
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   margin: 60px 0;
 }
@@ -379,6 +378,7 @@ export default {
 
     .question {
       color: white;
+      border-radius: 10px;
       border: 1px solid white;
       width: 600px;
       margin-top: 70px;
@@ -387,11 +387,6 @@ export default {
       justify-content: center;
       align-items: center;
       margin-bottom: 100px;
-
-      p{
-        
-      }
-      
     }
 
     .answer{
@@ -403,6 +398,7 @@ export default {
 
     .list-item {
       padding: 0;
+      border-radius: 10px;
       list-style: none;
       display: flex;
       color: white;
@@ -412,6 +408,7 @@ export default {
 
       .item {
         width: calc(100% / 4);
+        border-radius: 10px;
         margin: 20px 30px;
         padding: 10px 20px;
         display: flex;
